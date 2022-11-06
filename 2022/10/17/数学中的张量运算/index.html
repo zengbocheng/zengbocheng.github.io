@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 数学中的张量运算 · Bocheng Zeng's BLOG</title><meta name="description" content="数学中的张量运算 - Bocheng Zeng"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/hermes.css"><link rel="search" type="application/opensearchdescription+xml" href="https://zengbocheng.github.io/atom.xml" title="Bocheng Zeng's BLOG"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Bocheng Zeng's BLOG" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div class="wrap"><header><a class="logo-link" href="/"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link" href="/" target="_self">BLOG</a></li><li class="nav-list-item"><a class="nav-list-link" href="/archives/" target="_self">ARCHIVE</a></li><li class="nav-list-item"><a class="nav-list-link" href="/atom.xml" target="_self">FEED</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">数学中的张量运算</h1><div class="post-info">Oct 17, 2022</div><div class="post-content"><h2 id="点积"><a href="#点积" class="headerlink" title="点积"></a><strong>点积</strong></h2><p>一阶张量[n,]的点积，结果为0阶张量[]，即标量</p>
+<span id="more"></span>
+<script type="math/tex; mode=display">
+\mathbf a = [a_1, \dots, a_n ]^T, \quad \mathbf b = [b_1, \dots, b_n]^T \\
+\mathbf a \cdot \mathbf b = \sum a_ib_i</script><p>二阶张量[n, m]的点积，结果为二阶张量</p>
+<script type="math/tex; mode=display">
+\mathbf A = {
+    \begin{bmatrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+    \end{bmatrix}
+}, \quad
+\mathbf B = {
+    \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22}
+    \end{bmatrix}
+} \\
+
+\mathbf A \cdot \mathbf B = {
+    \begin{bmatrix}
+    a_{11}b_{11} & a_{12}b_{12} \\
+    a_{21}b_{21} & b_{22}b_{22}
+    \end{bmatrix}
+}</script><p>二阶张量[n, m]与一阶张量[m,]的点积，结果为一阶张量[n,]，即矢量</p>
+<script type="math/tex; mode=display">
+\mathbf A = {
+    \begin{bmatrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+    \end{bmatrix}
+},
+\quad \mathbf b = [b_1, b_2]^T \\
+
+\mathbf A \cdot \mathbf b = [a_{11}b_1+a_{12}b_2, \quad a_{21}b_1+a_{22}b_2]^T</script><p>一阶张量[n,]与二阶张量[n, m]的点积，结果为一阶张量[m,]</p>
+<script type="math/tex; mode=display">
+\mathbf a = [a_1, a_2]^T, \quad \mathbf B = {
+    \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22}
+    \end{bmatrix}
+} \\
+
+\mathbf a \cdot \mathbf B = (\mathbf a^T \mathbf B)^T = \mathbf B^T \mathbf a =  {
+    \begin{bmatrix}
+    a_1b_{11} + a_2b_{21} \\
+    a_1b_{12} + a_2b_{22}
+    \end{bmatrix}
+}</script><h2 id="双点积"><a href="#双点积" class="headerlink" title="双点积"></a><strong>双点积</strong></h2><p>二阶张量[n, m]的双点积，结果为0阶张量[]</p>
+<script type="math/tex; mode=display">
+\mathbf A = {
+    \begin{bmatrix}
+    a_{11} & a_{12} \\
+    a_{21} & a_{22}
+    \end{bmatrix}
+}, \quad
+\mathbf B = {
+    \begin{bmatrix}
+    b_{11} & b_{12} \\
+    b_{21} & b_{22}
+    \end{bmatrix}
+} \\
+
+\mathbf A : \mathbf B = a_{11}b_{11} + a_{12}b_{12} + a_{21}b_{21} + a_{22}b_{22}</script><h2 id="并矢积"><a href="#并矢积" class="headerlink" title="并矢积"></a><strong>并矢积</strong></h2><p>一阶张量[n,] [m,]的并矢积，结果为二阶张量[n, m]</p>
+<script type="math/tex; mode=display">
+\mathbf a = [a_1, a_2]^T \quad \mathbf b = [b_1, b_2]^T \\
+\mathbf a \otimes \mathbf b = \mathbf a \mathbf b^T = {
+    \begin{bmatrix}
+    a_1b_1 & a_1b_2 \\
+    a_2b_1 & a_2b_2
+    \end{bmatrix}
+}</script><h2 id="Nabla算子"><a href="#Nabla算子" class="headerlink" title="Nabla算子"></a><strong>Nabla算子</strong></h2><p>设x,y是空间自变量，t是时间自变量，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="8.437ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 3729.3 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D42E" d="M40 442L134 446Q228 450 229 450H235V273V165Q235 90 238 74T254 52Q268 46 304 46H319Q352 46 380 67T419 121L420 123Q424 135 425 199Q425 201 425 207Q425 233 425 249V316Q425 354 423 363T410 376Q396 380 369 380H356V442L554 450V267Q554 84 556 79Q561 62 610 62H623V31Q623 0 622 0Q603 0 527 -3T432 -6Q431 -6 431 25V56L420 45Q373 6 332 -1Q313 -6 281 -6Q208 -6 165 14T109 87L107 98L106 230Q106 358 104 366Q96 380 50 380H37V442H40Z"/></g></g><g data-mml-node="mo" transform="translate(639,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(1028,0)"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/></g><g data-mml-node="mo" transform="translate(1600,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mi" transform="translate(2044.7,0)"><path data-c="1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="mo" transform="translate(2534.7,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/></g><g data-mml-node="mi" transform="translate(2979.3,0)"><path data-c="1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"/></g><g data-mml-node="mo" transform="translate(3340.3,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>是因变量且含两个分量u, v。<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.075ex;" xmlns="http://www.w3.org/2000/svg" width="1.885ex" height="1.62ex" role="img" focusable="false" viewbox="0 -683 833 716"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="2207" d="M46 676Q46 679 51 683H781Q786 679 786 676Q786 674 617 326T444 -26Q439 -33 416 -33T388 -26Q385 -22 216 326T46 676ZM697 596Q697 597 445 597T193 596Q195 591 319 336T445 80L697 596Z"/></g></g></g></svg></mjx-container>算子是空间上的梯度。</p>
+<script type="math/tex; mode=display">
+\nabla = {
+    \begin{bmatrix}
+    \frac {\partial} {\partial x} \\
+    \frac {\partial} {\partial y}
+    \end{bmatrix}
+}, \quad 
+\mathbf u = {
+    \begin{bmatrix}
+    u \\
+    v
+    \end{bmatrix}
+} \\
+
+\nabla \mathbf u = \nabla \otimes \mathbf u = \nabla \mathbf u^T = {
+    \begin{bmatrix}
+    \frac {\partial u} {\partial x} & \frac {\partial v} {\partial x}\\
+    \frac {\partial u} {\partial y} & \frac {\partial v} {\partial y}
+    \end{bmatrix}
+}</script><h2 id="Laplace算子"><a href="#Laplace算子" class="headerlink" title="Laplace算子"></a><strong>Laplace算子</strong></h2><p>算子是梯度的散度，或者是梯度的点积</p>
+<script type="math/tex; mode=display">
+\Delta = \frac {\partial^2} {\partial x^2} + \frac {\partial^2} {\partial y^2} \\
+\Delta = div(\nabla) = \nabla^2 = \nabla \cdot \nabla</script><p>【注意】Nabla算子和Laplace算子都是对空间维度而言的。</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a><strong>举例</strong></h2><p>以2D Burgers方程为例(省略了系数D)</p>
+<script type="math/tex; mode=display">
+\frac {\partial \mathbf u} {\partial t} = D\Delta \mathbf u - \mathbf u \cdot \nabla \mathbf u</script><p>其中</p>
+<script type="math/tex; mode=display">
+\frac {\partial \mathbf u(x, y, t)} {\partial t} = {
+    \begin{bmatrix}
+    \frac {\partial u} {\partial t} \\
+    \frac {\partial v} {\partial t}
+    \end{bmatrix}
+} \\
+
+\Delta \mathbf u(x, y, t) = {
+    \begin{bmatrix}
+    \frac {\partial^2 u} {\partial x^2} + \frac {\partial^2 u} {\partial y^2} \\
+    \frac {\partial^2 v} {\partial x^2} + \frac {\partial^2 v} {\partial y^2}
+    \end{bmatrix}
+} \\
+
+\mathbf u(x, y, t) \cdot \nabla \mathbf u(x, y, t) = \biggl([u, v] {
+    \begin{bmatrix}
+    \frac {\partial u} {\partial x} & \frac {\partial v} {\partial x}\\
+    \frac {\partial u} {\partial y} & \frac {\partial v} {\partial y}
+    \end{bmatrix}
+}\biggr)^T  = {
+    \begin{bmatrix}
+    u \frac {\partial u} {\partial x} + v \frac {\partial u} {\partial y} \\
+    u \frac {\partial v} {\partial x} + v \frac {\partial v} {\partial y}
+    \end{bmatrix}
+}</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+\frac {\partial u} {\partial t} = \frac {\partial^2 u} {\partial x^2} + \frac {\partial^2 u} {\partial y^2} - u \frac {\partial u} {\partial x} - v \frac {\partial u} {\partial y} \\
+\frac {\partial v} {\partial t} = \frac {\partial^2 v} {\partial x^2} + \frac {\partial^2 v} {\partial y^2} - u \frac {\partial v} {\partial x} - v \frac {\partial v} {\partial y}
+\end{cases}</script></div></article></div></main><footer><div class="paginator"><a class="prev" href="/2022/10/22/Common%20Finite%20Difference%20Stencils%20(Filters)/">PREV</a><a class="next" href="/2022/05/15/Deep%20Residual%20Learning%20for%20Image%20Recognition/">NEXT</a></div><div id="disqus_thread"></div><script>var disqus_shortname = 'bochengzeng';
+var disqus_identifier = '2022/10/17/数学中的张量运算/';
+var disqus_title = '数学中的张量运算';
+var disqus_url = 'https://zengbocheng.github.io/2022/10/17/数学中的张量运算/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//#{theme.disqus}.disqus.com/count.js" async></script><div class="copyright"><p>© 2022 <a href="https://zengbocheng.github.io">Bocheng Zeng</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/claymcleod/hexo-theme-hermes" target="_blank">hexo-theme-hermes</a>. </p><p>Logo made by <a target="_blank" rel="noopener" href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a target="_blank" rel="noopener" href="https://flaticon.com">www.flaticon.com</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
