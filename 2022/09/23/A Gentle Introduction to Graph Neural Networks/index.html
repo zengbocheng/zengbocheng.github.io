@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="bocheng zeng&#39;s BLOG">
+    <title>A Gentle Introduction to Graph Neural Networks - bocheng zeng&#39;s BLOG</title>
+    <meta name="author" content="Bocheng Zeng">
+    
+    
+    
+        
+            <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+        
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Bocheng Zeng","sameAs":[]},"articleBody":"There are many practical applications of graph neural networks in areas such as antibactertial discovery, physics simulation, fake news detection, traffic prediction and recommendation systems. This articles explore and explains modern GNN.\r\n\r\nWhat a graph is\r\n\r\nvertex attributes\r\nedge attributes and directions\r\nglobal attributes\r\n\r\nto further describe each node, egde or the entire graph, we can store information in each of these pieces of the graph (using vector).\r\nGraph and where to find them\r\nimage as graphs: each pixel represents a node and is connected via an edge to adjacent pixels. The information stores in each node is a 3-d vector.\r\ntext as graphs: each word and character is a node and is connected via an edge to the node that follow it (a simple directed graph).\r\nIn practice, this is not usually how text and images are encoded.\r\nmolecules as graphs:it's convenient to describe this 3D object as a graph, whose nodes are atoms and edges are covalent bonds.\r\nsocial network as graphs: modeling individuals as nodes and their relationships as edges.\r\ncitation networks as graphs: each paper is a node and each directed edge is a citation between one paper and another.\r\nother examples: objects in visual scenes; variables in ML models, progamming code and math equations.\r\nWhat types of problems have graph structured data\r\ngraph-level task: predict the property of en entire graph.\r\n\r\nmolecule\r\nimage classification\r\nsentiment analysis of text\r\n\r\nnode-level task: predict the identity or role of each node within a graph.\r\n\r\npeople's role in a social network\r\nimage segmentation\r\ndetermine the part of speech of a word\r\n\r\nedge-level task: predict the relationship of each node with edges\r\n\r\nimage scene understanding\r\n\r\nThe challenges of using graphs in machine learning\r\nHow we will represent graphs to be compatible with neural networks.\r\nGraphs have up to four types of information: nodes, edges, global-context and connectivity. The first three can be represented with feature matrix N and the last one with adjacency lists.\r\nGraph Neural Networks\r\nA GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).\r\nthe simplest GNN\r\nlearning new embeddings for nodes, edges and global-context but not use connectivity.\r\n\r\nuse a MLP as a GNN layer\r\nrespectively, input node, edges and global-context vectors, get back learned nodes, edges and global-context embedding\r\nstack GNN layers together\r\n\r\nGNN predictions by pooling information\r\nWe need collect information from edges and give them to nodes for prediction by pooling. (on final layer)\r\n\r\ngather each of their embeddings and concatenate\r\naggregated, usually via sum\r\n\r\nedge to node / node to edge / node to global\r\nPassing messages between parts of the graph\r\nmessage passing, where neighboring nodes or edges exchange information, leverage the connectivity of graphs.\r\n\r\ngather all the neighboring node embeddings (messages), g\r\naggragate all messages via an aggregate function (like sum)\r\npass through an update function, usually a learned neural network\r\n\r\nLearning edge representations\r\nWe can share information between nodes and edges within the GNN layer using message passing by pooling. We could choose whether to update node embeddings before edge embeddings, or the other way around. The order we update them is one design decision.\r\nAdding global representations\r\nNodes that are far away from each other in the graph may never be able to efficiently transfer information to one another. One solution: using a master node or context vector which connected to all other nodes and edges.\r\nGNN playground\r\nThe GNN playground allows us to see how these different components and architectures contribute to a GNN's ability to learn a real task: a graph-level prediction task with small molecular graphs.\r\nA playground, then some experimental results of its dataset...\r\n\r\na higher numeber of parameters does correlate with higher performance\r\nmodels with higher dimensionality tend to have better mean and lower boud performance, but not much\r\nthe mean performance tends to increase with the number of layers, but the best performing models have two layers\r\nthe performance of different aggregation operations is very close\r\nthe performance of different ways to message passing\r\n\r\nInto the Weeds\r\nsome myriad knowledges relevant for GNNs...\r\nFinal thoughts\r\nAuthors' conclusion.\r\n\r\nsource: https://distill.pub/2021/gnn-intro/\r\n\r\n","dateCreated":"2022-09-23T00:00:00+08:00","dateModified":"2022-11-13T17:58:58+08:00","datePublished":"2022-09-23T00:00:00+08:00","description":"There are many practical applications of graph neural networks in areas such as antibactertial discovery, physics simulation, fake news detection, traffic prediction and recommendation systems. This articles explore and explains modern GNN.","headline":"A Gentle Introduction to Graph Neural Networks","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"},"publisher":{"@type":"Organization","name":"Bocheng Zeng","sameAs":[]},"url":"https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"}</script>
+    <meta name="description" content="There are many practical applications of graph neural networks in areas such as antibactertial discovery, physics simulation, fake news detection, traffic prediction and recommendation systems. This a">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="A Gentle Introduction to Graph Neural Networks">
+<meta property="og:url" content="https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/index.html">
+<meta property="og:site_name" content="bocheng zeng&#39;s BLOG">
+<meta property="og:description" content="There are many practical applications of graph neural networks in areas such as antibactertial discovery, physics simulation, fake news detection, traffic prediction and recommendation systems. This a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-13T09:58:58.675Z">
+<meta property="article:author" content="Bocheng Zeng">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/style-zfxwmtntvas3hmlvxjnngyyzywjclzolg5sqotl9do0ntl99aieaeskuovct.min.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            bocheng zeng&#39;s BLOG
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="Categories"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/about"
+                            
+                            rel="noopener"
+                            title="About"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/mail"
+                            
+                            rel="noopener"
+                            title="Contact"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Contact</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/atom.xml"
+                            
+                            rel="noopener"
+                            title="RSS"
+                        >
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            A Gentle Introduction to Graph Neural Networks
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2022-09-23T00:00:00+08:00">
+	
+		    Sep 23, 2022
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Paper-Notes/">Paper Notes</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>There are many practical applications of graph neural networks in areas such as antibactertial discovery, physics simulation, fake news detection, traffic prediction and recommendation systems. This articles explore and explains modern GNN.</p>
+<span id="more"></span>
+<p><strong>What a graph is</strong></p>
+<ul>
+<li>vertex attributes</li>
+<li>edge attributes and directions</li>
+<li>global attributes</li>
+</ul>
+<p>to further describe each node, egde or the entire graph, we can store information in each of these pieces of the graph (using vector).</p>
+<h2 id="graph-and-where-to-find-them"><strong>Graph and where to find them</strong></h2>
+<p><strong>image as graphs</strong>: each pixel represents a node and is connected via an edge to adjacent pixels. The information stores in each node is a 3-d vector.</p>
+<p><strong>text as graphs</strong>: each word and character is a node and is connected via an edge to the node that follow it (a simple directed graph).</p>
+<p>In practice, this is not usually how text and images are encoded.</p>
+<p><strong>molecules as graphs</strong>:it's convenient to describe this 3D object as a graph, whose nodes are atoms and edges are covalent bonds.</p>
+<p><strong>social network as graphs</strong>: modeling individuals as nodes and their relationships as edges.</p>
+<p><strong>citation networks as graphs</strong>: each paper is a node and each directed edge is a citation between one paper and another.</p>
+<p><strong>other examples</strong>: objects in visual scenes; variables in ML models, progamming code and math equations.</p>
+<h2 id="what-types-of-problems-have-graph-structured-data"><strong>What types of problems have graph structured data</strong></h2>
+<p><strong>graph-level task</strong>: predict the property of en entire graph.</p>
+<ul>
+<li>molecule</li>
+<li>image classification</li>
+<li>sentiment analysis of text</li>
+</ul>
+<p><strong>node-level task</strong>: predict the identity or role of each node within a graph.</p>
+<ul>
+<li>people's role in a social network</li>
+<li>image segmentation</li>
+<li>determine the part of speech of a word</li>
+</ul>
+<p><strong>edge-level task</strong>: predict the relationship of each node with edges</p>
+<ul>
+<li>image scene understanding</li>
+</ul>
+<h2 id="the-challenges-of-using-graphs-in-machine-learning"><strong>The challenges of using graphs in machine learning</strong></h2>
+<p>How we will represent graphs to be compatible with neural networks.</p>
+<p>Graphs have up to four types of information: nodes, edges, global-context and connectivity. The first three can be represented with feature matrix N and the last one with adjacency lists.</p>
+<h2 id="graph-neural-networks"><strong>Graph Neural Networks</strong></h2>
+<p>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</p>
+<p><strong>the simplest GNN</strong></p>
+<p>learning new embeddings for nodes, edges and global-context but not use connectivity.</p>
+<ul>
+<li>use a MLP as a GNN layer</li>
+<li>respectively, input node, edges and global-context vectors, get back learned nodes, edges and global-context embedding</li>
+<li>stack GNN layers together</li>
+</ul>
+<p><strong>GNN predictions by pooling information</strong></p>
+<p>We need collect information from edges and give them to nodes for prediction by pooling. (on final layer)</p>
+<ul>
+<li>gather each of their embeddings and concatenate</li>
+<li>aggregated, usually via sum</li>
+</ul>
+<p>edge to node / node to edge / node to global</p>
+<p><strong>Passing messages between parts of the graph</strong></p>
+<p>message passing, where neighboring nodes or edges exchange information, leverage the connectivity of graphs.</p>
+<ul>
+<li>gather all the neighboring node embeddings (messages), g</li>
+<li>aggragate all messages via an aggregate function (like sum)</li>
+<li>pass through an update function, usually a learned neural network</li>
+</ul>
+<p><strong>Learning edge representations</strong></p>
+<p>We can share information between nodes and edges within the GNN layer using message passing by pooling. We could choose whether to update node embeddings before edge embeddings, or the other way around. The order we update them is one design decision.</p>
+<p><strong>Adding global representations</strong></p>
+<p>Nodes that are far away from each other in the graph may never be able to efficiently transfer information to one another. One solution: using a master node or context vector which connected to all other nodes and edges.</p>
+<h2 id="gnn-playground"><strong>GNN playground</strong></h2>
+<p>The GNN playground allows us to see how these different components and architectures contribute to a GNN's ability to learn a real task: a graph-level prediction task with small molecular graphs.</p>
+<p>A playground, then some experimental results of its dataset...</p>
+<ul>
+<li>a higher numeber of parameters does correlate with higher performance</li>
+<li>models with higher dimensionality tend to have better mean and lower boud performance, but not much</li>
+<li>the mean performance tends to increase with the number of layers, but the best performing models have two layers</li>
+<li>the performance of different aggregation operations is very close</li>
+<li>the performance of different ways to message passing</li>
+</ul>
+<h2 id="into-the-weeds"><strong>Into the Weeds</strong></h2>
+<p>some myriad knowledges relevant for GNNs...</p>
+<h2 id="final-thoughts"><strong>Final thoughts</strong></h2>
+<p>Authors' conclusion.</p>
+<blockquote>
+<p>source: https://distill.pub/2021/gnn-intro/</p>
+</blockquote>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/10/04/Understanding%20Convolutions%20on%20Graphs/"
+                    data-tooltip="Understanding Convolutions on Graphs"
+                    aria-label="PREVIOUS: Understanding Convolutions on Graphs"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/25/Graph%20Attention%20Networks/"
+                    data-tooltip="Graph Attention Networks"
+                    aria-label="NEXT: Graph Attention Networks"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2022 Bocheng Zeng. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/10/04/Understanding%20Convolutions%20on%20Graphs/"
+                    data-tooltip="Understanding Convolutions on Graphs"
+                    aria-label="PREVIOUS: Understanding Convolutions on Graphs"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/05/25/Graph%20Attention%20Networks/"
+                    data-tooltip="Graph Attention Networks"
+                    aria-label="NEXT: Graph Attention Networks"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a
+                        class="post-action-btn btn btn--default"
+                        href="#disqus_thread"
+                        aria-label="Leave a comment"
+                    >
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                        aria-label="Share on Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/"
+                        aria-label="Share on Google+"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">Bocheng Zeng</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/script-blvyfispjkj90xrferrslyyouvwmensmizeg2vtlohovmtymqtftxbuqvkwe.min.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/';
+              
+            this.page.identifier = '2022/09/23/A Gentle Introduction to Graph Neural Networks/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'bochengzeng';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+
+    </body>
+</html>
