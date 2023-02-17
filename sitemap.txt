@@ -1,3 +1,7 @@
+https://zengbocheng.github.io/2023/02/13/Deep%20Hidden%20Physics%20Models%20Deep%20Learning%20of%20Nonlinear%20Partial%20Differential%20Equations/
+https://zengbocheng.github.io/2023/02/01/Differentiable%20Physics-informed%20Graph%20Networks/
+https://zengbocheng.github.io/2022/10/30/Physics-Aware%20Difference%20Graph%20Networks%20for%20Sparsely%20Observed%20Dynamics/
+https://zengbocheng.github.io/2022/11/05/Relational%20inductive%20biases,%20deep%20learning,%20and%20graph%20networks/
 https://zengbocheng.github.io/2022/10/15/Encoding%20Physics%20to%20Learn%20Reaction-diffiusion%20Process/
 https://zengbocheng.github.io/2022/10/04/Understanding%20Convolutions%20on%20Graphs/
 https://zengbocheng.github.io/2022/09/23/A%20Gentle%20Introduction%20to%20Graph%20Neural%20Networks/
